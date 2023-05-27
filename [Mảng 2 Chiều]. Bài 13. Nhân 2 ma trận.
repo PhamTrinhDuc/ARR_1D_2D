@@ -1,0 +1,39 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int m , n , p ; cin >> m >> n >> p ; 
+    long long a[m][n] , b[n][p]  , c [m][p] ; 
+    for(int i=0 ; i<m ;i++){
+        for(int j=0 ; j<n ;j++){
+            cin >> a[i][j] ; 
+        }
+    }
+    for(int i=0 ; i<n ;i++){
+        for(int j=0 ; j<p ;j++){
+            cin >> b[i][j] ; 
+        }
+    }
+    for(int i=0 ; i<m ; i++){
+        for(int j=0 ; j<p ; j++){
+            long long sum =0 ; 
+            for(int k=0 ; k<n ; k++){
+                sum += a[i][k] * b[k][j] ; 
+                c[i][j] = sum ; 
+            }
+        }
+    }
+    for(int i=0 ; i<m ; i++){
+        for(int j=0 ; j<p ; j++){
+            cout << c[i][j] << ' ' ; 
+        }
+        cout << endl ; 
+    }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
