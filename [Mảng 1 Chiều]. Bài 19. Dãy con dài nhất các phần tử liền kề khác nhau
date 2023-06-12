@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+    int n ; cin >> n ; 
+    int a[n+1] ; 
+    for(int i=0 ; i<=n ; i++) {
+        cin >> a[i] ; 
+        a[n] = a[n-1] ; 
+    } 
+    int l = 0  , pos = -1 , cnt = 1 , sum = a[0]  , res = -1 ; 
+    for(int i=1 ;i<=n ; i++){
+        if(a[i] != a[i-1]){
+            sum += a[i] ; 
+            cnt++ ; 
+        }
+        else{ 
+            if(cnt >  pos || (cnt == pos && sum > res)){
+                pos = cnt ; 
+                res = sum ; 
+                l = i - pos ; 
+            }
+            sum = a[i] ; 
+            cnt = 1 ; 
+        }
+    }
+    cout << pos << endl ; 
+    for(int i=l ; i<pos + l ; i++){
+        cout << a[i] << ' ' ; 
+    }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
