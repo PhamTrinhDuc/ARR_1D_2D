@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+    int  n  ; cin >> n ; 
+    int a[n+1] ; 
+    for(int i=1 ; i<=n ; i++) cin >> a[i] ; 
+    ll f[n+1] = {0} ; 
+    map<int,int> mp ; 
+    mp[0] = 0 ; 
+    int res  = -1 , pos = - 1  ;
+    for(int i=1 ;i<=n ; i++){
+        f[i] = f[i-1] + a[i] ; 
+        if(mp.count(f[i])){
+            int l = mp[f[i]] ; 
+            if(i-l > res ){
+                res = i - l; 
+                pos = l + 1 ; 
+            }
+        }
+        else mp[f[i]] = i ; 
+    }
+    if(pos==-1) cout << "NOT FOUND" ; 
+    else{
+        for(int i=pos ; i<pos + res  ; i++) cout << a[i] <<' ';
+    }
+}
