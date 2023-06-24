@@ -1,0 +1,36 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int n , a[105][105] , cnt[105]  ; 
+void nhap(){
+    cin >> n ; 
+    for(int i=1 ; i<=n ; i++){
+        for(int j=1 ; j<=n ; j++){
+            cin >> a[i][j] ; 
+        }
+    }
+}
+int main() {
+    nhap() ; 
+    for(int i=1 ; i<=n ; i++){
+        for(int j=1 ; j<=n ; j++ ){
+            if(cnt[a[i][j]] == i-1 ){
+                cnt[a[i][j]] = i ;
+            }
+        }
+    }
+    bool ok = 0 ; 
+    for(int i=0 ; i<=105 ; i++){
+        if(cnt[i] == n ){
+            cout << i << ' ' ; 
+            ok = 1 ; 
+        }
+    }
+    if(ok==0) cout <<"NOT FOUND" ;
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
